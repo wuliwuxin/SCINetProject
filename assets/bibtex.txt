@@ -1,10 +1,5 @@
-@article{WU2023111030,
-  title = {CTransCNN: Combining transformer and CNN in multilabel medical image classification},
-  journal = {Knowledge-Based Systems},
-  pages = {111030},
-  year = {2023},
-  issn = {0950-7051},
-  doi = {https://doi.org/10.1016/j.knosys.2023.111030},
-  url = {https://www.sciencedirect.com/science/article/pii/S0950705123007803},
-  author = {Xin Wu and Yue Feng and Hong Xu and Zhuosheng Lin and Tao Chen and Shengke Li and Shihan Qiu and Qichao Liu and Yuangang Ma and Shuangsheng Zhang}
+@article{WU2025,  
+title = {Exploring Partial Multi-Label Learning via Integrating Semantic Co-occurrence Knowledge},  
+year = {2025},  
+author = {Wu, Xin and Teng, Fei and Feng, Yue and Shi, Kaibo and Lin, Zhuosheng and Zhang, Ji and Wang, James}
 }

@@ -74,54 +74,54 @@
         <!-- authors -->
         <div class="row gy-2">
           <div class="col-12 col-md-2">
-            <a class="link" href="https://wuliwuxin.github.io">Xin Wu</a
-            ><sup>1</sup>
+            <a class="link" href="https://wuliwuxin.github.io">Xin Wu</a>
+            <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=5CVB6eYAAAAJ&view_op=list_works&sortby=pubdate"
-              >Fei Teng</a
-            ><sup>1</sup>
+              >Fei Teng</a>
+              <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=6ooJsggAAAAJ&hl=zh-CN&oi=sra"
-              >Yue Feng</a
-            ><sup>2,3</sup>
+              >Yue Feng</a>
+              <!-- <sup>2,3</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=bXZqA38AAAAJ&hl=zh-CN&oi=ao"
-              >Kaibo Shi</a
-            ><sup>4,5</sup>
+              >Kaibo Shi</a>
+              <!-- <sup>4,5</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=-hWd0y4AAAAJ&hl=zh-CN&oi=ao"
-              >Zhuosheng Lin</a
-            ><sup>2</sup>
+              >Zhuosheng Lin</a>
+              <!-- <sup>2</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=F9dKrEwAAAAJ&view_op=list_works&sortby=pubdate"
-              >Ji Zhang</a
-            ><sup>1</sup>
+              >Ji Zhang</a>
+              <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://experts.swinburne.edu.au/530-james-wang"
-              >James Wang</a
-            ><sup>3</sup>
+              >James Wang</a>
+              <!-- <sup>3</sup> -->
           </div>
         </div>
         <!-- author organization -->
-        <div class="row mt-3">
+        <!-- <div class="row mt-3">
           <div class="col-12">
             <sup>1</sup>Southwest Jiaotong University &nbsp;&nbsp;
             <sup>2</sup>Wuyi University &nbsp;&nbsp;
@@ -129,7 +129,7 @@
             <sup>4</sup>Sichuan University&nbsp;&nbsp;
             <sup>5</sup>Chengdu University&nbsp;&nbsp;
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- <div class="text-center" style="margin-top: 20px">
@@ -222,27 +222,26 @@
       <hr class="body-hr"/>
       <div class="text-center">
           <figure class="figure">
-              <img src="assets/model.png" class="figure-img img-fluid rounded" alt="method">
+              <img src="assets/SCINet.png" class="figure-img img-fluid rounded" alt="method">
               <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
           </figure>
       </div>
       <p class="card-text">
-          The proposed approach for multilabel medical image classification consists of three 
-          main stages, The first stage is to extract the initial features using the Conv module 
-          and then send two copies of them to the transformer branch and the CNN branch, respectively. 
-          In the second stage, the transformer branch adopts the label embedding and the MSS block 
-          of the MMAEF, while the CNN branch utilizes the MBR with nested inner and outer branches. The stacking of 
-          the MMAEF and MBR is equal to the number of layers in a vanilla transformer, denoted as. 
-          We believe that our model's number of layers is on par with the original architecture, 
-          which enhances structural reusability. Additionally, the widely recognized ViT model 
-          employs the transformer architecture for computer vision tasks and also utilizes a 
-          foundational version with 12 layers. Meanwhile, the IIM consists of the C2T and the T2C 
-          components to progressively fuse the feature maps in an interactive manner. Finally, 
-          after obtaining <i>T</i> features and <i>>C</i> features from the two branches, we investigate three 
-          fusion methods for their classification: direct addition of the branch scores, w
-          eighted addition of the branch scores (with weight coefficients ranging from 0 to 1), 
-          and classification based on the concatenation of the final feature maps from the two 
-          branches. 
+        Partial multi-label learning aims to extract knowledge from incompletely annotated data, 
+        which includes known correct labels, known incorrect labels, and unknown labels. 
+        The core challenge lies in accurately identifying the ambiguous relationships between labels 
+        and instances. In this paper, we emphasize that matching co-occurrence patterns between labels 
+        and instances is key to addressing this challenge. To this end, we propose Semantic 
+        Co-occurrence Insight Network (SCINet), a novel and effective framework for partial 
+        multi-label learning. Specifically, SCINet introduces a bi-dominant prompter module, which 
+        leverages an off-the-shelf multimodal model to capture text-image correlations and enhance 
+        semantic alignment. To reinforce instance-label interdependencies, we develop a cross-modality
+        fusion module that jointly models inter-label correlations, inter-instance relationships, 
+        and co-occurrence patterns across instance-label assignments. Moreover, we propose an 
+        intrinsic semantic augmentation strategy that enhances the model’s understanding of 
+        intrinsic data semantics by applying diverse image transformations, thereby fostering a 
+        synergistic relationship between label confidence and sample difficulty. Extensive experiments 
+        on four widely-used benchmark datasets demonstrate that SCINet surpasses state-of-the-art methods.
       </p>
   </div>
 </div>
@@ -267,38 +266,86 @@
 
         <!--start accordion-->
         <div class="accordion" id="accordionExample">
+          <!-- Result 1 -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        #1. ChestX-ray11
+                        #1. Patial Multi-label
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <figure class="figure">
-                            <img src="./assets/CXR11.png" class="figure-img img-fluid rounded" alt="method">
+                            <img src="./assets/VOC2007_COCO14_Label_Proportion_mAP.png" class="figure-img img-fluid rounded" alt="method">
                         </figure>
                     </div>
                 </div>
             </div>
-            
+            <!-- Result 2 -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        #2. NIH ChestX-ray14
+                        #2. Single Label
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <figure class="figure">
-                            <img src="./assets/CXR14.png" class="figure-img img-fluid rounded" alt="method">
+                            <img src="./assets/partial_single_label_voc_coco.png" class="figure-img img-fluid rounded" alt="method">
                         </figure>
                     </div>
                 </div>
             </div>
-
+          <!-- Result 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        #3. Learnable Prompts
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/LearnablePrompts.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <!-- Result 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        #4. Relations on COCO014 Dataset
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/relation_coco2014.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <!-- Result 5 --> 
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        #5. Parameter K
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/K_coco2014.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -317,7 +364,7 @@
                 <!-- &nbsp;&nbsp;issn = {0950-7051},<br/> -->
                 <!-- &nbsp;&nbsp;doi = {https://doi.org/10.1016/j.knosys.2023.111030},<br/> -->
                 <!-- &nbsp;&nbsp;url = {https://www.sciencedirect.com/science/article/pii/S0950705123007803},<br/> -->
-                &nbsp;&nbsp;author = {Wu, Xin and Teng, Fei and Feng, Yue and Shi, Kaibo and Lin, Zhuosheng and Zhang, Ji and Wang James}<br/>
+                &nbsp;&nbsp;author = {Wu, Xin and Teng, Fei and Feng, Yue and Shi, Kaibo and Lin, Zhuosheng and Zhang, Ji and Wang, James}<br/>
               }
             </code>
           </p>
