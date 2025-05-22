@@ -227,21 +227,16 @@
           </figure>
       </div>
       <p class="card-text">
-        Partial multi-label learning aims to extract knowledge from incompletely annotated data, 
-        which includes known correct labels, known incorrect labels, and unknown labels. 
-        The core challenge lies in accurately identifying the ambiguous relationships between labels 
-        and instances. In this paper, we emphasize that matching co-occurrence patterns between labels 
-        and instances is key to addressing this challenge. To this end, we propose Semantic 
-        Co-occurrence Insight Network (SCINet), a novel and effective framework for partial 
-        multi-label learning. Specifically, SCINet introduces a bi-dominant prompter module, which 
-        leverages an off-the-shelf multimodal model to capture text-image correlations and enhance 
-        semantic alignment. To reinforce instance-label interdependencies, we develop a cross-modality
-        fusion module that jointly models inter-label correlations, inter-instance relationships, 
-        and co-occurrence patterns across instance-label assignments. Moreover, we propose an 
-        intrinsic semantic augmentation strategy that enhances the model’s understanding of 
-        intrinsic data semantics by applying diverse image transformations, thereby fostering a 
-        synergistic relationship between label confidence and sample difficulty. Extensive experiments 
-        on four widely-used benchmark datasets demonstrate that SCINet surpasses state-of-the-art methods.
+      The proposed SCINet framework addresses partial multi-label learning through three key 
+      components: 1) <b>Bi-Dominant Prompter</b>, leveraging CLIP-based text and visual encoders to 
+      capture semantic co-occurrence between labels and instances, enhanced by weak/medium/strong 
+      image transformations; 2) <b>Cross-Modality Fusion Module</b>, which optimizes label confidence 
+      by integrating instance similarity (via Gaussian-based local relationships) and label 
+      correlations (via Pearson coefficients) into a unified confidence matrix; 3) <b>Intrinsic 
+      Semantic Augmentation</b>, employing triple transformations (weak, medium, strong) with 
+      consistency losses and self-distillation to align semantic distributions across 
+      perturbations. These components synergistically exploit global label-instance dependencies, 
+      refine multi-modal alignment, and enhance robustness against partial supervision.
       </p>
   </div>
 </div>
@@ -271,7 +266,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        # 1. Patial Multi-label
+                        # 1. Varying Label Proportions
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -287,7 +282,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        # 2. Single Label
+                        # 2. Feature Space Comparison
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -303,7 +298,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        # 3. Learnable Prompts
+                        # 3. Prompt Length Impact
                     </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -319,7 +314,7 @@
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        # 4. Relations on COCO014 Dataset
+                        # 4. Similarity Measure
                     </button>
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
