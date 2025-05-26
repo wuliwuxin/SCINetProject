@@ -56,6 +56,341 @@
     />
     <!-- favicon -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <!-- Demo styles -->
+    <style>
+        .demo-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .demo-inner {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .demo-nav-button {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .demo-nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .demo-nav-button:disabled {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .demo-example-selector {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px;
+            border-radius: 25px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-example-button {
+            background: transparent;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .demo-example-button.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-example-button:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .demo-playback-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 16px;
+            border-radius: 20px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-play-pause-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .demo-play-pause-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .demo-progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .demo-image-container {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .demo-image-container.active {
+            display: block;
+        }
+
+        .demo-main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .demo-image-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .demo-image-display {
+            width: 100%;
+            max-height: 300px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            border: 2px dashed #1976d2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-image-display img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .demo-data-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .demo-section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .demo-subsection {
+            margin-bottom: 15px;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-subsection-title {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-object-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .demo-object-tag {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid rgba(25, 118, 210, 0.2);
+        }
+
+        .demo-objects-tag {
+            background: #fff3e0;
+            color: #f57c00;
+            border: 1px solid rgba(245, 124, 0, 0.2);
+        }
+
+        .demo-prediction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #4caf50;
+        }
+
+        .demo-prediction-label {
+            font-weight: 600;
+            color: #333;
+            flex: 1;
+        }
+
+        .demo-confidence-bar {
+            width: 100px;
+            height: 18px;
+            background: #e0e0e0;
+            border-radius: 9px;
+            overflow: hidden;
+            position: relative;
+            margin-left: 8px;
+        }
+
+        .demo-confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+            border-radius: 9px;
+            transition: width 1s ease;
+            position: relative;
+        }
+
+        .demo-confidence-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .demo-match-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .demo-match-correct { background: #4caf50; }
+        .demo-match-incorrect { background: #f44336; }
+        .demo-match-partial { background: #ff9800; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .demo-main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-container {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .demo-controls {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .demo-example-selector {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .demo-prediction-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .demo-confidence-bar {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
   </head>
 
   <body>
@@ -75,74 +410,49 @@
         <div class="row gy-2">
           <div class="col-14 col-md-1">
             <a class="link" href="https://wuliwuxin.github.io">Xin Wu</a>
-            <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-1">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=5CVB6eYAAAAJ&view_op=list_works&sortby=pubdate"
               >Fei Teng</a>
-              <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-1">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=6ooJsggAAAAJ&hl=zh-CN&oi=sra"
               >Yue Feng</a>
-              <!-- <sup>2,3</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=bXZqA38AAAAJ&hl=zh-CN&oi=ao"
               >Kaibo Shi</a>
-              <!-- <sup>4,5</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?user=-hWd0y4AAAAJ&hl=zh-CN&oi=ao"
               >Zhuosheng Lin</a>
-              <!-- <sup>2</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=F9dKrEwAAAAJ&view_op=list_works&sortby=pubdate"
               >Ji Zhang</a>
-              <!-- <sup>1</sup> -->
           </div>
           <div class="col-12 col-md-2">
             <a
               class="link"
               href="https://experts.swinburne.edu.au/530-james-wang"
               >James Wang</a>
-              <!-- <sup>3</sup> -->
           </div>
         </div>
-        <!-- author organization -->
-        <!-- <div class="row mt-3">
-          <div class="col-12">
-            <sup>1</sup>Southwest Jiaotong University &nbsp;&nbsp;
-            <sup>2</sup>Wuyi University &nbsp;&nbsp;
-            <sup>3</sup>Swinburne University of Technology&nbsp;&nbsp;
-            <sup>4</sup>Sichuan University&nbsp;&nbsp;
-            <sup>5</sup>Chengdu University&nbsp;&nbsp;
-          </div>
-        </div> -->
       </div>
-
-      <!-- <div class="text-center" style="margin-top: 20px">
-        <h3 style="font-weight: bold">🎉🎉🎉 Accepted by TMM 2025 🎉🎉🎉</h3>
-      </div> -->
 
       <!-- links -->
       <div class="text-center">
         <div class="row justify-content-md-center" id="links">
-          <!--                <div class="col col-lg-2">-->
-          <!--                    <a id="paper" href="#">Paper</a>-->
-          <!--                </div>-->
-
           <!-- Arxiv Link -->
           <div class="col col-lg-2">
             <a id="arxiv" href="">Paper</a>
@@ -150,11 +460,7 @@
           <!-- Code Link -->
           <div class="col col-lg-2">
             <a id="code" href="https://github.com/wuliwuxin/SCINet">Code</a>
-            <!-- <div style="margin-top: -0.5rem">(coming soon)</div> -->
           </div>
-          <!--                <div class="col col-lg-2">-->
-          <!--                    <a id="demo" href="https://huggingface.co/datasets/xingxm/SVG-Color-Emoji-Dataset">Dataset</a>-->
-          <!--                </div>-->
         </div>
       </div>
       <br />
@@ -171,16 +477,20 @@
           <hr class="body-hr" />
           <ul class="list-unstyled">
             <li class="mb-2">
-              <strong>Core Innovation:</strong> 
-              SCINet introduces a novel and effective framework that directly addresses the ambiguity between labels and instances in partial multi-label learning by emphasizing the crucial role of matching co-occurrence patterns.
+              <strong>SCINet Framework:</strong> 
+              Models semantic co-occurrence among labels, instances, and instance-label assignments for precise partial multi-label learning. 
             </li>
             <li class="mb-2">
-              <strong>Superior Performance:</strong>
-              A cross-modality fusion module is meticulously designed to optimize label confidence by deeply integrating textual and visual data, considering both local similarities between samples and global correlations among labels.
+              <strong>Bi-Dominant Prompter & Cross-Modality Fusion:</strong>
+            Uses CLIP to craft text- and image-based prompts and fuse them for robust label confidence.
             </li>
-            <li>
+            <li class="mb-2">
+              <strong>Intrinsic Semantic Augmentation:</strong>
+            Applies multi-level augmentations with dynamic thresholds and self-distillation to align confidence with sample difficulty.
+            </li>
+            <li class="mb-2">
               <strong>Superior Performance:</strong> 
-              SCINet consistently surpasses state-of-the-art methods across <b>four widely-used benchmark datasets</b>, demonstrating robust performance and strong generalization ability in partial multi-label classification tasks.
+              Outperforms baselines on VOC2007/12, COCO2014, and CUB—e.g. up to <b style="color: #7e57c2">+9.02%</b> mAP gain under partial annotations.
             </li>
           </ul>
         </div>
@@ -205,8 +515,8 @@
             which leverages an off-the-shelf multimodal model to capture text-image correlations and enhance 
             semantic alignment. To reinforce instance-label interdependencies, we develop a <b style="color: #7e57c2">cross-modality 
             fusion module</b> that jointly models inter-label correlations, inter-instance relationships, and 
-            co-occurrence patterns across instance-label assignments. Moreover, we propose an <b style="color: #7e57c2"></b>intrinsic 
-            semantic augmentation strategy</b> that enhances the model’s understanding of intrinsic data 
+            co-occurrence patterns across instance-label assignments. Moreover, we propose an <b style="color: #7e57c2">intrinsic 
+            semantic augmentation strategy</b> that enhances the model's understanding of intrinsic data 
             semantics by applying diverse image transformations, thereby fostering a synergistic relationship 
             between label confidence and sample difficulty. Extensive experiments on four widely-used 
             benchmark datasets demonstrate that SCINet surpasses state-of-the-art methods.
@@ -223,7 +533,6 @@
       <div class="text-center">
           <figure class="figure">
               <img src="assets/SCINet.png" class="figure-img img-fluid rounded" alt="method">
-              <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
           </figure>
       </div>
       <p class="card-text">
@@ -242,125 +551,354 @@
 </div>
 <br>
 
-<!-- Demo -->
+<!-- Interactive Demo -->
 <div class="card border-0">
-  <!-- <div class="card-body">
-      <h2 class="card-title card-title-margin">Demo</h2>
+  <div class="card-body">
+      <h2 class="card-title card-title-margin">Interactive Demo</h2>
       <hr class="body-hr"/>
-          <div>
-              <img id="prompt-sweep-img" src="assets/demo.gif"  width="80%">
+      
+      <div class="demo-container">
+        <div class="demo-inner">
+          <div class="demo-title">Partial Multi-label Learning Results</div>
+          
+          <div class="demo-controls">
+            <button class="demo-nav-button" id="demoPrevBtn" onclick="demoPreviousExample()">← Previous</button>
+            
+            <div class="demo-example-selector">
+              <button class="demo-example-button active" onclick="demoShowExample(0)">Example 1</button>
+              <button class="demo-example-button" onclick="demoShowExample(1)">Example 2</button>
+              <button class="demo-example-button" onclick="demoShowExample(2)">Example 3</button>
+              <button class="demo-example-button" onclick="demoShowExample(3)">Example 4</button>
+            </div>
+            
+            <button class="demo-nav-button" id="demoNextBtn" onclick="demoNextExample()">Next →</button>
+            
+            <div class="demo-playback-controls">
+              <button class="demo-play-pause-btn" id="demoPlayPauseBtn" onclick="demoToggleAutoPlay()">⏸️</button>
+              <div class="demo-progress-indicator">
+                <span id="demoCurrentExample">1</span> / <span id="demoTotalExamples">4</span>
+              </div>
+            </div>
           </div>
-  </div> -->
-  <br/>
 
-  <!-- Results -->
-  <div class="card border-0">
-    <div class="card-body">
-        <h2 class="card-title card-title-margin">More Results</h2>
-        <hr class="body-hr"/>
+          <div class="demo-image-container active" id="demoImage1">
+            <div class="demo-main-content">
+              <div class="demo-image-section">
+                <div class="demo-section-title">🖼️ COCO Dataset Example</div>
+                <div class="demo-image-display">
+                  <img src="example/COCO_train2014_000000001144.jpg" alt="Restaurant Scene">
+                </div>
+              </div>
+              <div class="demo-data-section">
+                <div class="demo-section-title">📊 Partial Multi-label Results</div>
+                
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Known Objects</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag demo-objects-tag">Person</span>
+                  </div>
+                </div>
 
-        <!--start accordion-->
-        <div class="accordion" id="accordionExample">
-          <!-- Result 1 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        # 1. Varying Label Proportions
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/VOC2007_COCO14_Label_Proportion_mAP.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Full Annotations</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag">Sandwich</span>
+                    <span class="demo-object-tag">Car</span>
+                    <span class="demo-object-tag">Chair</span>
+                    <span class="demo-object-tag">Dining Table</span>
+                    <span class="demo-object-tag">Person</span>
+                    <span class="demo-object-tag">Wine Glass</span>
+                    <span class="demo-object-tag">Handbag</span>
+                    <span class="demo-object-tag">Backpack</span>
+                  </div>
                 </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">SCINet Predictions</div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-correct"></span>
+                      Person
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 72.73%"></div>
+                      <div class="demo-confidence-text">72.73%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- Result 2 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        # 2. Feature Space Comparison
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/partial_single_label_voc_coco.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
+          </div>
+
+          <div class="demo-image-container" id="demoImage2">
+            <div class="demo-main-content">
+              <div class="demo-image-section">
+                <div class="demo-section-title">🖼️ COCO Dataset Example</div>
+                <div class="demo-image-display">
+                  <img src="example/COCO_train2014_000000143348.jpg" alt="Tennis Scene">
                 </div>
+              </div>
+              <div class="demo-data-section">
+                <div class="demo-section-title">📊 Partial Multi-label Results</div>
+                
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Known Objects</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag demo-objects-tag">Person</span>
+                    <span class="demo-object-tag demo-objects-tag">Tennis Racket</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Full Annotations</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag">Sports Ball</span>
+                    <span class="demo-object-tag">Chair</span>
+                    <span class="demo-object-tag">Tennis Racket</span>
+                    <span class="demo-object-tag">Person</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">SCINet Predictions</div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-correct"></span>
+                      Person
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 84.57%"></div>
+                      <div class="demo-confidence-text">84.57%</div>
+                    </div>
+                  </div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-correct"></span>
+                      Chair
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 87.01%"></div>
+                      <div class="demo-confidence-text">87.01%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          <!-- Result 3 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        # 3. Prompt Length Impact
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/LearnablePrompts.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
+          </div>
+
+          <div class="demo-image-container" id="demoImage3">
+            <div class="demo-main-content">
+              <div class="demo-image-section">
+                <div class="demo-section-title">🖼️ COCO Dataset Example</div>
+                <div class="demo-image-display">
+                  <img src="example/COCO_train2014_000000054160.jpg" alt="Kitchen Scene">
                 </div>
+              </div>
+              <div class="demo-data-section">
+                <div class="demo-section-title">📊 Partial Multi-label Results</div>
+                
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Known Objects</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag demo-objects-tag">Banana</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Full Annotations</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag">Refrigerator</span>
+                    <span class="demo-object-tag">Sink</span>
+                    <span class="demo-object-tag">Bottle</span>
+                    <span class="demo-object-tag">Bowl</span>
+                    <span class="demo-object-tag">Banana</span>
+                    <span class="demo-object-tag">Vase</span>
+                    <span class="demo-object-tag">Potted Plant</span>
+                    <span class="demo-object-tag">Oven</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">SCINet Predictions</div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-correct"></span>
+                      Banana
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 56.10%"></div>
+                      <div class="demo-confidence-text">56.10%</div>
+                    </div>
+                  </div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-incorrect"></span>
+                      Dining Table
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 50.85%"></div>
+                      <div class="demo-confidence-text">50.85%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- Result 4 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        # 4. Similarity Measure
-                    </button>
-                </h2>
-                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/relation_coco2014.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
+          </div>
+
+          <div class="demo-image-container" id="demoImage4">
+            <div class="demo-main-content">
+              <div class="demo-image-section">
+                <div class="demo-section-title">🖼️ COCO Dataset Example</div>
+                <div class="demo-image-display">
+                  <img src="example/COCO_train2014_000000309531.jpg" alt="Indoor Collection Scene">
                 </div>
+              </div>
+              <div class="demo-data-section">
+                <div class="demo-section-title">📊 Partial Multi-label Results</div>
+                
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Known Objects</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag demo-objects-tag">Airplane</span>
+                    <span class="demo-object-tag demo-objects-tag">Clock</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">Full Annotations</div>
+                  <div class="demo-object-list">
+                    <span class="demo-object-tag">Clock</span>
+                    <span class="demo-object-tag">Bottle</span>
+                    <span class="demo-object-tag">Book</span>
+                    <span class="demo-object-tag">Airplane</span>
+                  </div>
+                </div>
+
+                <div class="demo-subsection">
+                  <div class="demo-subsection-title">SCINet Predictions</div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-correct"></span>
+                      Airplane
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 82.24%"></div>
+                      <div class="demo-confidence-text">82.24%</div>
+                    </div>
+                  </div>
+                  <div class="demo-prediction-item">
+                    <span class="demo-prediction-label">
+                      <span class="demo-match-indicator demo-match-incorrect"></span>
+                      Car
+                    </span>
+                    <div class="demo-confidence-bar">
+                      <div class="demo-confidence-fill" style="width: 53.30%"></div>
+                      <div class="demo-confidence-text">53.30%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!-- Result 5 --> 
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        # 5. Parameter&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>λ</mi><mrow><mi>n</mi></mrow></msub></math>&nbsp;and &nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>λ</mi><mrow><mi>q</mi></mrow></msub></math>
-                    </button>
-                </h2>
-                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/3D_without_line.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
-                </div>
-            </div>
-            <!-- Result 6 --> 
-            <!-- <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        # 6. Parameter K
-                    </button>
-                </h2>
-                <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <figure class="figure">
-                            <img src="./assets/K_coco2014.png" class="figure-img img-fluid rounded" alt="method">
-                        </figure>
-                    </div>
-                </div>
-            </div> -->
+          </div>
         </div>
-    </div>
+      </div>
+  </div>
 </div>
 <br>
+
+      <!-- Results -->
+      <div class="card border-0">
+        <div class="card-body">
+            <h2 class="card-title card-title-margin">More Results</h2>
+            <hr class="body-hr"/>
+
+            <!--start accordion-->
+            <div class="accordion" id="accordionExample">
+              <!-- Result 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            # 1. Varying Label Proportions
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <figure class="figure">
+                                <img src="./assets/VOC2007_COCO14_Label_Proportion_mAP.png" class="figure-img img-fluid rounded" alt="method">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            # 2. Feature Space Comparison
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <figure class="figure">
+                                <img src="./assets/partial_single_label_voc_coco.png" class="figure-img img-fluid rounded" alt="method">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+              <!-- Result 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            # 3. Prompt Length Impact
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <figure class="figure">
+                                <img src="./assets/LearnablePrompts.png" class="figure-img img-fluid rounded" alt="method">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            # 4. Similarity Measure
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <figure class="figure">
+                                <img src="./assets/relation_coco2014.png" class="figure-img img-fluid rounded" alt="method">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result 5 --> 
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            # 5. Parameter&nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>λ</mi><mrow><mi>n</mi></mrow></msub></math>&nbsp;and &nbsp;<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>λ</mi><mrow><mi>q</mi></mrow></msub></math>
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <figure class="figure">
+                                <img src="./assets/3D_without_line.png" class="figure-img img-fluid rounded" alt="method">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
       <!-- Citation -->
       <div class="card border-0">
         <div class="card-body">
@@ -369,12 +907,7 @@
             <code>
               @article{WU2025,<br />
                 &nbsp;&nbsp;title = {Exploring Partial Multi-Label Learning via Integrating Semantic Co-occurrence Knowledge},<br/>
-                <!-- &nbsp;&nbsp;journal = {Knowledge-Based Systems},<br/>  -->
-                <!-- &nbsp;&nbsp;pages = {111030},<br/> -->
                 &nbsp;&nbsp;year = {2025},<br/>
-                <!-- &nbsp;&nbsp;issn = {0950-7051},<br/> -->
-                <!-- &nbsp;&nbsp;doi = {https://doi.org/10.1016/j.knosys.2023.111030},<br/> -->
-                <!-- &nbsp;&nbsp;url = {https://www.sciencedirect.com/science/article/pii/S0950705123007803},<br/> -->
                 &nbsp;&nbsp;author = {Wu, Xin and Teng, Fei and Feng, Yue and Shi, Kaibo and Lin, Zhuosheng and Zhang, Ji and Wang, James}<br/>
               }
             </code>
@@ -440,5 +973,118 @@
         </div>
       </div>
     </footer>
+
+    <script>
+        // Demo functionality
+        let demoCurrentIndex = 0;
+        let demoIsAutoPlaying = true;
+        let demoAutoPlayInterval;
+        const demoDisplayTimePerImage = 5000;
+        const demoImages = document.querySelectorAll('.demo-image-container');
+        const demoExampleButtons = document.querySelectorAll('.demo-example-button');
+        const demoTotalExamples = demoImages.length;
+
+        function demoShowExample(index) {
+            // Remove active class from all containers and buttons
+            demoImages.forEach(img => img.classList.remove('active'));
+            demoExampleButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to selected container and button
+            demoImages[index].classList.add('active');
+            demoExampleButtons[index].classList.add('active');
+            
+            demoCurrentIndex = index;
+            demoUpdateUI();
+            demoAnimateConfidenceBars();
+        }
+
+        function demoNextExample() {
+            const nextIndex = (demoCurrentIndex + 1) % demoTotalExamples;
+            demoShowExample(nextIndex);
+        }
+
+        function demoPreviousExample() {
+            const prevIndex = (demoCurrentIndex - 1 + demoTotalExamples) % demoTotalExamples;
+            demoShowExample(prevIndex);
+        }
+
+        function demoToggleAutoPlay() {
+            const playPauseBtn = document.getElementById('demoPlayPauseBtn');
+            
+            if (demoIsAutoPlaying) {
+                clearInterval(demoAutoPlayInterval);
+                playPauseBtn.innerHTML = '▶️';
+                demoIsAutoPlaying = false;
+            } else {
+                demoStartAutoPlay();
+                playPauseBtn.innerHTML = '⏸️';
+                demoIsAutoPlaying = true;
+            }
+        }
+
+        function demoStartAutoPlay() {
+            demoAutoPlayInterval = setInterval(() => {
+                demoNextExample();
+            }, demoDisplayTimePerImage);
+        }
+
+        function demoUpdateUI() {
+            document.getElementById('demoCurrentExample').textContent = demoCurrentIndex + 1;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('demoPrevBtn');
+            const nextBtn = document.getElementById('demoNextBtn');
+            
+            prevBtn.disabled = false;
+            nextBtn.disabled = false;
+        }
+
+        function demoAnimateConfidenceBars() {
+            const activeContainer = document.querySelector('.demo-image-container.active');
+            if (!activeContainer) return;
+
+            const confidenceFills = activeContainer.querySelectorAll('.demo-confidence-fill');
+            
+            confidenceFills.forEach((fill, index) => {
+                const targetWidth = fill.style.width;
+                fill.style.width = '0%';
+                setTimeout(() => { 
+                    fill.style.width = targetWidth;
+                }, 100 + index * 200);
+            });
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('demoTotalExamples').textContent = demoTotalExamples;
+            demoUpdateUI();
+            demoAnimateConfidenceBars();
+            
+            // Start auto-play
+            demoStartAutoPlay();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        demoPreviousExample();
+                        break;
+                    case 'ArrowRight':
+                        demoNextExample();
+                        break;
+                    case ' ':
+                        e.preventDefault();
+                        demoToggleAutoPlay();
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                        demoShowExample(parseInt(e.key) - 1);
+                        break;
+                }
+            });
+        });
+    </script>
   </body>
 </html>
